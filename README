@@ -33,6 +33,7 @@ Songs can be added after playback begins, but not when using shuffle mode.
 ./mps delete <track number> - cannot be used while mplayer is running. Find track numbers - ./mps showlist | cat -n
 ./mps clear - clear playlist
 
+![MPS](https://github.com/sshpass/mps/blob/main/scrot.png)
 ./mps enable notify - enable notifications
 ./mps disable notify - disable notifications
 
