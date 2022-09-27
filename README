@@ -1,0 +1,44 @@
+---------------------------------------------------------------------------------------------------------------------
+mplayer script (MPS)   -   MPlayer command line front end. Create and play mplayer playlists (music only)
+---------------------------------------------------------------------------------------------------------------------
+
+The following programs are used by MPS and must be installed:
+mplayer
+mp3info
+ffmpeg
+notify-send (libnotify-bin or libnotify)
+---------------------------------------------------------------------------------------------------------------------
+
+All names (title, artist, album and genre) are case insensitive and partial matches work.
+When two words are used, be sure to use quotes (example: "rock and roll")
+MPS will search your music folder and subdirectories. Define the path to your music folder in the script
+
+Songs can be added after playback begins, but not when using shuffle mode.
+
+./mps add title <title> - add tracks by title (Add all mp3's in your music folder with './mps add title')
+./mps add artist <artist>  - add tracks by artist
+./mps add album <album>  - add tracks by album
+./mps add genre <genre>  - add tracks by genre
+
+./mps play - play tracks in playlist
+./mps shuffle - play and shuffle tracks in playlist
+
+./mps showlist - show tracks in playlist
+./mps pause - pause/unpause music
+./mps next - play next track in playlist
+./mps previous - play previous track
+./mps repeat - repeat the currently playing track once
+./mps stop - stop playback
+./mps trackinfo - show info about currently playing track.
+./mps delete <track number> - cannot be used while mplayer is running. Find track numbers - ./mps showlist | cat -n
+./mps clear - clear playlist
+
+./mps enable notify - enable notifications
+./mps disable notify - disable notifications
+
+./mps enable eq - enable audio equalizer. You can tweak these settings to your liking in the mps file
+./mps disable eq - disable audio equalizer.
+
+you can add an alias to .bash_aliases (or .profile in OpenBSD)
+alias mps="/home/user/mps"
+and then you can just use mps play, etc. Be sure to reload file. source .bash_aliases ( or . ~/.profile in OpenBSD)
