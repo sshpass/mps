@@ -42,5 +42,3 @@ Songs can be added after playback begins, but not when using shuffle mode.
 you can add an alias to .bash_aliases (or .profile in OpenBSD)
 alias mps="/home/user/mps"
 and then you can just use mps play, etc. Be sure to reload file. source .bash_aliases ( or . ~/.profile in OpenBSD)
-
-![](https://repository-images.githubusercontent.com/537748818/0ba77310-b120-4ffb-a6e2-9433f34123f7)
