@@ -15,14 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see https://www.gnu.org/licenses/
 
-music=~/Music
+music=~/music
 eq_settings="2:6:2:1:1:0:1:2:5:2"
 
 function usage {
 echo ""
 echo "  MPS - Mplayer script (c) 2022 Marc Carlson"
 echo ""
-echo "  Usage: ./mps [options]"
+echo "  Usage: mps [options]"
 echo ""
 echo "  add title <title> - add tracks by title"
 echo "  add album <album> - add tracks by album"
@@ -294,7 +294,11 @@ if [[ $1 == "delete" ]] && [[ "$2" == $2 ]]; then
 $1 $2 && exit
 fi
 
-if [[ "$1" == $1 ]] && [ -z $2 ]
+list='play shuffle pause trackinfo next previous repeat stop delete clear showlist'
+for item in $list;
+do
+if [[ $1 == "$item" ]]
 then
 $1 && exit
 fi
+done
