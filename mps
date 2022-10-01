@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see https://www.gnu.org/licenses/
 
-music=~/music
+music=~/Music
 eq_settings="2:6:2:1:1:0:1:2:5:2"
 
 function usage {
