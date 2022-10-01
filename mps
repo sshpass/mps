@@ -290,15 +290,11 @@ $2 $3 && exit
 fi
 done
 
-if [[ $1 == "delete" ]] && [[ "$2" == $2 ]]; then
-$1 $2 && exit
-fi
-
 list='play shuffle pause trackinfo next previous repeat stop delete clear showlist'
 for item in $list;
 do
 if [[ $1 == "$item" ]]
 then
-$1 && exit
+$1 $2 && exit
 fi
 done
