@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see https://www.gnu.org/licenses/
 
-music=~/Music
+music=~/music
 eq_settings="2:6:2:1:1:0:1:2:5:2"
 
 function usage {
@@ -132,11 +132,11 @@ else
 if [[ -e /tmp/new ]]; then rm /tmp/new
 fi
 if pgrep -x mplayer >/dev/null;
-then for file in $music/**/*.mp3; do if [[ "$(mp3info -p '%t' "$file")" == *"$1"* ]]; then echo $file >> /tmp/playlist && echo $file > /tmp/new
+then for file in $music/**/*.mp3; do if [[ "$(mp3info -p '%t' "$file")" == *"$1"* ]]; then echo "$file" >> /tmp/playlist && echo $file > /tmp/new
 fi
 done
 echo "loadlist /tmp/new 2" > /tmp/fifo
-else for file in $music/**/*.mp3; do if [[ "$(mp3info -p '%t' "$file")" == *"$1"* ]]; then echo $file >> /tmp/playlist
+else for file in $music/**/*.mp3; do if [[ "$(mp3info -p '%t' "$file")" == *"$1"* ]]; then echo "$file" >> /tmp/playlist
 fi
 done
 fi
@@ -284,9 +284,9 @@ get_args $@
 list='genre album artist title'
 for item in $list;
 do
-if [[ $1 == "add" ]] && [[ $2 == "$item" ]] && [[ "$3" == $3 ]]
+if [[ $1 == "add" ]] && [[ $2 == "$item" ]] && [[ "$3" == "$3" ]]
 then
-$2 $3 && exit
+$2 "$3" && exit
 fi
 done
 
