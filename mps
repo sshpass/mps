@@ -30,8 +30,6 @@ echo "  add genre <genre> - add tracks by genre"
 echo "  add artist <artist> - add tracks by artist"
 echo ""
 echo "  play - play tracks in playlist"
-echo "  shuffle - play and shuffle tracks in playlist"
-echo ""
 echo "  showlist - show tracks in playlist"
 echo "  pause - pause/unpause music"
 echo "  next - play next track in playlist"
@@ -39,7 +37,7 @@ echo "  previous - play previous track"
 echo "  repeat - repeat the currently playing track once"
 echo "  stop - stop playback"
 echo "  trackinfo - show info about currently playing track"
-echo "  delete <track number> - delete tracks"
+echo "  delete <track number> - delete track"
 echo "  clear - clear playlist"
 echo ""
 echo "  enable notify - enable notifications"
@@ -212,18 +210,10 @@ done
 
 function play {
 if [ ! -f /tmp/playlist ]; then echo No songs in playlist && exit; fi
+if [ -e /tmp/shuffle ]; then shuffle="-shuffle"; fi
 if pgrep -x mplayer >/dev/null; then echo mplayer already running && exit
 else if [[ ! -e /tmp/fifo ]]; then mkfifo /tmp/fifo; fi
-( mplayer -slave -input file=/tmp/fifo -playlist /tmp/playlist > /tmp/log 2>&1 & )
-fi
-}
-
-function shuffle {
-if [ ! -f /tmp/playlist ]; then echo No songs in playlist && exit
-fi
-if pgrep -x mplayer >/dev/null; then echo mplayer already running && exit
-else if [[ ! -e /tmp/fifo ]]; then mkfifo /tmp/fifo; fi
-( mplayer -slave -input file=/tmp/fifo -shuffle -playlist /tmp/playlist > /tmp/log 2>&1 & )
+( mplayer -slave -input file=/tmp/fifo $shuffle -playlist /tmp/playlist > /tmp/log 2>&1 & )
 fi
 }
 
@@ -290,7 +280,7 @@ $2 "$3" && exit
 fi
 done
 
-list='play shuffle pause trackinfo next previous repeat stop delete clear showlist'
+list='play pause trackinfo next previous repeat stop delete clear showlist'
 for item in $list;
 do
 if [[ $1 == "$item" ]]
