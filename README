@@ -9,6 +9,9 @@ ffmpeg
 notify-send (libnotify-bin or libnotify)
 ---------------------------------------------------------------------------------------------------------------------
 
+11.28.2022 - Fixed a bug that caused add [pattern] to add all matching names even when "" is used.
+             Removed shuffle - mps will shuffle tracks if /tmp/shuffle exists - touch /tmp/shuffle
+
 All names (title, artist, album and genre) are case insensitive and partial matches work.
 When two words are used, be sure to use quotes (example: "rock and roll")
 MPS will search your music folder and subdirectories. Define the path to your music folder in the script
@@ -21,8 +24,6 @@ Songs can be added after playback begins, but not when using shuffle mode.
 ./mps add genre <genre>  - add tracks by genre
 
 ./mps play - play tracks in playlist
-./mps shuffle - play and shuffle tracks in playlist
-
 ./mps showlist - show tracks in playlist
 ./mps pause - pause/unpause music
 ./mps next - play next track in playlist
